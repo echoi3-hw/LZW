@@ -23,6 +23,7 @@ public class Encoder {
 				current = (char) br.read();
 				temp += current;
 			}
+			//hi
 			//break case where we arent at the end of the file, and thus temp is no longer a key
 			if (br.ready()) {
 				try {
