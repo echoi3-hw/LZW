@@ -23,9 +23,14 @@ public class Decoder {
 		while (br.ready()) {
 			int codedLetter = br.read();
 			updatedWord += (char)codedLetter;
-			if (key.size() > codedLetter) {
-				pw.print(key.get(codedLetter));
+			if (!key.contains(updatedWord)) {
+				pw.print(key.get(key.indexOf(updatedWord.substring(0, updatedWord.length()-1))));
 			}
+			if (!key.contains(updatedWord)) {//change
+				key.add(updatedWord);
+				updatedWord = "";
+			}
+			
 		}
 	}
 }
