@@ -6,10 +6,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Decoder {
 	public Decoder () {
-	}
+		}
 	
 	public void decode (String fileName) throws IOException {
 		BufferedReader br = new BufferedReader(new FileReader(new File(fileName)));
@@ -18,19 +19,29 @@ public class Decoder {
 		for (int i = 0; i < 256; i++) {
 			key.add(""+(char)i);
 		}
-		String updatedWord = "";
+		String numberToWord = "";
 		//I am able to get the number correctly
 		while (br.ready()) {
+			String addedFirstWord = "";
+			String addedSecondWord = "";
 			int codedLetter = br.read();
-			updatedWord += (char)codedLetter;
-			if (!key.contains(updatedWord)) {
-				pw.print(key.get(key.indexOf(updatedWord.substring(0, updatedWord.length()-1))));
+			if (key.size() < codedLetter) {
+				numberToWord += key.get(key.indexOf(codedLetter));
+				pw.print(numberToWord);
 			}
-			if (!key.contains(updatedWord)) {//change
-				key.add(updatedWord);
-				updatedWord = "";
+			else {
+				key.add(addedFirstWord + addedFirstWord.substring(0,1));
+				numberToWord += key.get(key.indexOf(codedLetter));
+				pw.print(numberToWord);
 			}
-			
+			addedSecondWord = numberToWord;
+			if (!addedFirstWord.equals("")) {
+				key.add(addedFirstWord + addedSecondWord);
+			}
+			addedFirstWord = addedSecondWord;
+			addedSecondWord = "";
 		}
+		br.close();
+		pw.close();
 	}
 }
