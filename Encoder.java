@@ -23,7 +23,6 @@ public class Encoder {
 				current = (char) br.read();
 				temp += current;
 			}
-			//hi
 			//break case where we arent at the end of the file, and thus temp is no longer a key
 			if (br.ready()) {
 				try {
@@ -51,18 +50,15 @@ public class Encoder {
 		bw.close();
 	}
 
-	//writes the Integer onto the output file in base 256 2 digit form
+	//writes the Integer onto the output file as one character
 	private void write (Integer num, BufferedWriter writer) throws IOException {
-		int c1 = (int) (num / 256);
-		writer.write((char)c1);
-		int c2 = (int) (num % 256);
-		writer.write((char)c2);
+		writer.write((char) (num.intValue()));
 
 
 	}
 	//sets up the first 256 ascii chars in the dictionary
 	private void setup (int chars) {
-		for (int i = 0; i < chars; i++) {
+		for (int i = 0; i <= chars; i++) {
 			dict.put("" + (char) i, i);
 		}
 		counter = chars;
