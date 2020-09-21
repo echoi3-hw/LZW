@@ -22,7 +22,7 @@ public class Decoder {
 		String numberToWord = "";
 		String addedFirstWord = "";
 		String addedSecondWord = "";
-		int codedIndex = 0;
+		int codedIndex;
 		//I am able to get the number correctly
 		while (br.ready()) {
 			//System.out.println(br.read());
@@ -30,11 +30,13 @@ public class Decoder {
 			//System.out.println (codedIndex);
 			if (key.size() > codedIndex) {
 				numberToWord = key.get(codedIndex);
+				
 				pw.print(numberToWord);
 			}
 			else {
 				key.add(addedFirstWord + addedFirstWord.substring(0,1));
 				numberToWord = key.get(codedIndex);
+				System.out.println("ELSE TRIGGERED");
 				pw.print(numberToWord);
 			}
 			//System.out.println (numberToWord);
@@ -46,7 +48,7 @@ public class Decoder {
 				key.add(addedFirstWord + addedSecondWord);
 			}
 			addedFirstWord = addedSecondWord;
-			addedSecondWord = "";
+			//addedSecondWord = "";
 		}
 		br.close();
 		pw.close();
