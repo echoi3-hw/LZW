@@ -22,10 +22,11 @@ public class Decoder {
 		String numberToWord = "";
 		String addedFirstWord = "";
 		String addedSecondWord = "";
+		int codedIndex = 0;
 		//I am able to get the number correctly
 		while (br.ready()) {
 			//System.out.println(br.read());
-			int codedIndex = br.read();
+			codedIndex = br.read();
 			//System.out.println (codedIndex);
 			if (key.size() > codedIndex) {
 				numberToWord = key.get(codedIndex);
@@ -36,12 +37,12 @@ public class Decoder {
 				numberToWord = key.get(codedIndex);
 				pw.print(numberToWord);
 			}
-			System.out.println (numberToWord);
+			//System.out.println (numberToWord);
 			//System.out.println("c");
 			addedSecondWord = numberToWord;
 			//System.out.println(addedFirstWord);
 			//System.out.println(addedSecondWord);
-			if (!addedFirstWord.equals("")) {
+			if (!addedFirstWord.equals("") && !key.contains(addedFirstWord + addedSecondWord)) {
 				key.add(addedFirstWord + addedSecondWord);
 			}
 			addedFirstWord = addedSecondWord;
