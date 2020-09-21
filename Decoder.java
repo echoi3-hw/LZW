@@ -28,12 +28,12 @@ public class Decoder {
 			int codedIndex = br.read();
 			System.out.println (codedIndex);
 			if (key.size() > codedIndex) {
-				numberToWord += key.get(key.indexOf(codedIndex));
+				numberToWord += key.get(codedIndex);
 				pw.print(numberToWord);
 			}
 			else {
 				key.add(addedFirstWord + addedFirstWord.substring(0,1));
-				numberToWord += key.get(key.indexOf(codedIndex));
+				numberToWord += key.get(codedIndex);
 				pw.print(numberToWord);
 			}
 			System.out.println("c");
