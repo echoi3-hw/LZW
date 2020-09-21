@@ -20,24 +20,27 @@ public class Decoder {
 			key.add(""+(char)i);
 		}
 		String numberToWord = "";
+		String addedFirstWord = "";
+		String addedSecondWord = "";
 		//I am able to get the number correctly
 		while (br.ready()) {
-			String addedFirstWord = "";
-			String addedSecondWord = "";
 			//System.out.println(br.read());
 			int codedIndex = br.read();
-			System.out.println (codedIndex);
+			//System.out.println (codedIndex);
 			if (key.size() > codedIndex) {
-				numberToWord += key.get(codedIndex);
+				numberToWord = key.get(codedIndex);
 				pw.print(numberToWord);
 			}
 			else {
 				key.add(addedFirstWord + addedFirstWord.substring(0,1));
-				numberToWord += key.get(codedIndex);
+				numberToWord = key.get(codedIndex);
 				pw.print(numberToWord);
 			}
-			System.out.println("c");
+			System.out.println (numberToWord);
+			//System.out.println("c");
 			addedSecondWord = numberToWord;
+			//System.out.println(addedFirstWord);
+			//System.out.println(addedSecondWord);
 			if (!addedFirstWord.equals("")) {
 				key.add(addedFirstWord + addedSecondWord);
 			}
