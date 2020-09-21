@@ -53,6 +53,7 @@ public class Encoder {
 	//writes the Integer onto the output file as one character
 	private void write (Integer num, BufferedWriter writer) throws IOException {
 		writer.write((char) (num.intValue()));
+		System.out.println(num.intValue());
 
 
 	}
