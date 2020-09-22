@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Decoder {
+	private final int ORIG_LENGTH = 256; //starting length of the arraylist
 	private int maxLength;
 	public Decoder (int maxLength) {
 		this.maxLength = maxLength;
@@ -20,7 +21,7 @@ public class Decoder {
 		ArrayList<String> key = new ArrayList<String> ();
 		
 		//setting up my key with ascii characters 0-255
-		for (int i = 0; i < 256; i++) {
+		for (int i = 0; i < ORIG_LENGTH; i++) {
 			key.add(""+(char)i);
 		}
 		
@@ -49,6 +50,7 @@ public class Decoder {
 				key.add(addedFirstWord + addedSecondWord.substring(0, 1)); //add to our key here
 			}
 			addedFirstWord = addedSecondWord; //what was just printed becomes stored for the next iteration of the while loop
+			System.out.println(key.size());
 		}
 		br.close();
 		pw.close();

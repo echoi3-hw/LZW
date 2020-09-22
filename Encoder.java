@@ -2,6 +2,7 @@ import java.util.*;
 import java.io.*;
 import java.util.HashMap;
 public class Encoder {
+	private final int ORIG_LENGTH = 256;
 	private HashMap <String,Integer> dict;
 	private int counter, maxCodes;
 	public Encoder(int maxCodes) {
@@ -9,7 +10,7 @@ public class Encoder {
 		dict = new HashMap<String, Integer>();
 		counter = 0;
 		this.maxCodes = maxCodes;
-		setup(256);
+		setup(ORIG_LENGTH);
 	}
 	public void encode (String fileName) throws IOException {
 		BufferedReader br = new BufferedReader(new FileReader(new File(fileName)));
@@ -72,10 +73,10 @@ public class Encoder {
 
 	//adds new string to HashMap with the value of counter. Increments counter. Returns the associated value of str - 1 letter.
 	private Integer addKey (String str) {
-		//if (counter < maxCodes) {
-		dict.put(str, counter);
-		counter++;
-		//}
+		if (counter < maxCodes) {
+			dict.put(str, counter);
+			counter++;
+		}
 		return dict.get(str.substring(0,str.length()-1));
 	}
 }
