@@ -72,10 +72,10 @@ public class Encoder {
 
 	//adds new string to HashMap with the value of counter. Increments counter. Returns the associated value of str - 1 letter.
 	private Integer addKey (String str) {
-		if (counter < maxCodes) {
-			dict.put(str, counter);
-			counter++;
-		}
+		//if (counter < maxCodes) {
+		dict.put(str, counter);
+		counter++;
+		//}
 		return dict.get(str.substring(0,str.length()-1));
 	}
 }

@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Decoder {
-	public Decoder () {
+	private int maxLength;
+	public Decoder (int maxLength) {
+		this.maxLength = maxLength;
 	}
 	
 	public void decode (String fileName) throws IOException {
@@ -43,7 +45,7 @@ public class Decoder {
 			
 			addedSecondWord = numberToWord; //we store what was just printed
 			
-			if (!addedFirstWord.equals("")) { //this is simply to make sure that this isnt the very start of the .lzw file, in which we don't have anything to add to our key. (A more efficient way to do this may be with a counter, but oh well...)
+			if (!addedFirstWord.equals("") && key.size() < maxLength) { //this is simply to make sure that this isnt the very start of the .lzw file, in which we don't have anything to add to our key. (A more efficient way to do this may be with a counter, but oh well...)
 				key.add(addedFirstWord + addedSecondWord.substring(0, 1)); //add to our key here
 			}
 			addedFirstWord = addedSecondWord; //what was just printed becomes stored for the next iteration of the while loop
