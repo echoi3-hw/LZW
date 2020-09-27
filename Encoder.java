@@ -2,9 +2,18 @@ import java.util.*;
 import java.io.*;
 import java.util.HashMap;
 public class Encoder {
-	private final int ORIG_LENGTH = 256;
+	private final int ORIG_LENGTH = 256; // 128 or 256???
 	private HashMap <String,Integer> dict;
 	private int counter, maxCodes;
+	
+	/*
+	 * Edit 1: add arraydeque, array with maxSize
+	 */
+	
+	ArrayDeque<Integer> recentValues = new ArrayDeque<Integer>(); // keeps track of how recent its been used
+	final int maxSize = 4096 // not sure if this is right? just looked it up
+	int [] codefreq = new int [maxSize]; // array that keeps track of how 
+	
 	public Encoder(int maxCodes) {
 		//dictionary
 		dict = new HashMap<String, Integer>();
@@ -12,6 +21,9 @@ public class Encoder {
 		this.maxCodes = maxCodes;
 		setup(ORIG_LENGTH);
 	}
+	
+	
+	
 	public void encode (String fileName) throws IOException {
 		BufferedReader br = new BufferedReader(new FileReader(new File(fileName)));
 		BufferedWriter bw = new BufferedWriter(new FileWriter(new File(fileName.substring(0, fileName.length()-4)+".lzw")));
