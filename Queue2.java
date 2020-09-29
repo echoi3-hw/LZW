@@ -4,14 +4,16 @@ import java.util.LinkedList;
 
 public class Queue2 {
 	private static int maxSize;
+	private static LinkedList<Integer> list = new LinkedList<Integer>();
 
-	public Queue2 () 
+	public Queue2 (LinkedList<Integer> list2) 
 	{
-		LinkedList<Integer> list = new LinkedList<Integer>();
+		list = list2;
 	}
 
 
-	public static void pushToBack() {
-
+	public static void pushToBack(int pushed) 
+	{
+		list.addLast(pushed);
 	}
 }
