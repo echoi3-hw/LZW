@@ -14,6 +14,6 @@ public class Queue2 {
 
 	public static void pushToBack(int pushed) 
 	{
-		list.add(0, pushed);
+		list.add(list.size()-1, pushed);
 	}
 }
