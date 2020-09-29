@@ -1,9 +1,13 @@
 import java.util.*;
 import java.io.*;
-import java.util.PriorityQueue;
+import java.util.LinkedList;
 
 public class Queue2 {
-	PriorityQueue<Integer> pq = new PriorityQueue<Integer>();
+	
+	public Queue2 () 
+	{
+		LinkedList<Integer> list = new LinkedList<Integer>();
+	}
 	
 	public void pushToBack ()
 	{
