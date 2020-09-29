@@ -1,9 +1,17 @@
 import java.util.*;
+import java.io.*;
+import java.util.LinkedList;
 
 public class Queue2 {
-private static int maxSize;
+	private static int maxSize;
 
-public static void pushToBack() {
-	
-}
+	public Queue2 () 
+	{
+		LinkedList<Integer> list = new LinkedList<Integer>();
+	}
+
+
+	public static void pushToBack() {
+
+	}
 }
