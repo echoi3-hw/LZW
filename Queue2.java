@@ -20,5 +20,8 @@ public class Queue2 {
 		list.addFirst(pushed);
 	}
 	
+	public static void remove () {
+		list.removeFirst();
+	}
 	
 }
